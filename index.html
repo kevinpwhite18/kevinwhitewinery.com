@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Kevin White Winery</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <!-- Cormorant SC for the heading, EB Garamond for body text -->
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+SC:wght@300;400;500&family=EB+Garamond:ital,wght@0,400;0,500;1,400;1,500&display=swap" rel="stylesheet">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html {
+      background: #ffffff;
+    }
+
+    /* Warm shadow radiates outward from body edges — no html gradient, no hard line */
+    @media (min-width: 1441px) {
+      body {
+        box-shadow:
+          -80px 0 120px rgba(180, 150, 120, 0.20),
+           80px 0 120px rgba(180, 150, 120, 0.20);
+      }
+    }
+
+    body {
+      background: #ffffff;
+      max-width: 1440px;
+      margin: 0 auto;
+      /* Improves thin-stroke rendering on Windows/Chrome/Safari */
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+      text-rendering: optimizeLegibility;
+    }
+
+    /* Accessible hide — visible to screen readers, invisible on screen */
+    .visually-hidden {
+      position: absolute;
+      width: 1px;
+      height: 1px;
+      padding: 0;
+      margin: -1px;
+      overflow: hidden;
+      clip: rect(0, 0, 0, 0);
+      white-space: nowrap;
+      border: 0;
+    }
+
+    /* ── Logo header ── */
+    header {
+      position: relative;
+      background: #ffffff;
+      text-align: center;
+      padding: 24px 24px 0;
+      z-index: 2;
+    }
+
+    header img {
+      width: 360px;
+      max-width: 75vw;
+    }
+
+    /* White fade extending downward from header into photo */
+    header::after {
+      content: '';
+      position: absolute;
+      bottom: -60px;
+      left: 0;
+      right: 0;
+      height: 60px;
+      background: linear-gradient(to bottom, #ffffff, rgba(255,255,255,0));
+      pointer-events: none;
+      z-index: 3;
+    }
+
+    /* ── Hero ── */
+    .hero {
+      position: relative;
+      height: 52vh;
+      min-height: 400px; /* never shrinks below this on wide/short windows */
+      max-height: 580px; /* never grows too large on tall screens */
+      overflow: hidden;
+      line-height: 0;
+    }
+
+    .hero img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: 40% 25%; /* bias left to keep hand visible on wide viewports */
+      display: block;
+    }
+
+    /* Top gradient */
+    .hero::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 22%;
+      background: linear-gradient(
+        to bottom,
+        #ffffff 0%,
+        rgba(255,255,255,0.80) 30%,
+        rgba(255,255,255,0.30) 70%,
+        rgba(255,255,255,0) 100%
+      );
+      pointer-events: none;
+      z-index: 2;
+    }
+
+    /* Bottom gradient */
+    .hero::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      height: 30%;
+      background: linear-gradient(
+        to top,
+        #ffffff 0%,
+        rgba(255,255,255,0.90) 30%,
+        rgba(255,255,255,0.40) 70%,
+        rgba(255,255,255,0) 100%
+      );
+      pointer-events: none;
+      z-index: 2;
+    }
+
+    /* ── Our Story section ── */
+    .our-story {
+      background: linear-gradient(to bottom, transparent 0px, #ffffff 72px);
+      padding: 10px 24px 52px;
+      margin-top: -72px;
+      position: relative;
+      z-index: 3;
+    }
+
+    .our-story-inner {
+      max-width: 840px;
+      margin: 0 auto;
+    }
+
+    /* Closing mark at page bottom */
+    .page-end {
+      text-align: center;
+      padding: 16px 24px 56px;
+      background: #ffffff;
+    }
+
+    .page-end-rule {
+      width: 48px;
+      height: 1px;
+      background: #b0a090;
+      margin: 0 auto 28px;
+    }
+
+    .page-end img {
+      width: 88px;
+      max-width: 40vw;
+      opacity: 0.55;
+    }
+
+    /* Heading stays Cormorant SC — color unified to #111 */
+    .our-story h2 {
+      font-family: 'Cormorant SC', Georgia, serif;
+      font-size: 1.9rem;
+      font-weight: 400;
+      letter-spacing: 0.18em;
+      text-align: center;
+      color: #111;
+      margin-bottom: 48px;
+    }
+
+    .our-story h2::after {
+      content: '';
+      display: block;
+      width: 48px;
+      height: 1px;
+      background: #b0a090;
+      margin: 20px auto 0;
+    }
+
+    /* Body switches to EB Garamond — designed for screen body text */
+    .our-story p {
+      font-family: 'EB Garamond', Georgia, serif;
+      font-size: 1.35rem;
+      line-height: 1.75;
+      color: #111;
+      margin-bottom: 1.4em;
+      font-weight: 400;
+    }
+
+    .our-story p:last-child {
+      margin-bottom: 0;
+      font-style: italic;
+      color: #111;
+    }
+
+    /* ── iPad portrait (768px and below) ── */
+    @media (max-width: 768px) {
+      header img {
+        width: 280px;
+      }
+
+      .hero {
+        height: 340px;
+      }
+
+      .our-story p {
+        font-size: 1.2rem;
+      }
+    }
+
+    /* ── iPhone / small phone portrait (480px and below) ── */
+    @media (max-width: 480px) {
+      header {
+        padding: 18px 16px 0;
+      }
+
+      header img {
+        width: 200px;
+      }
+
+      header::after {
+        height: 40px;
+        bottom: -40px;
+      }
+
+      .hero {
+        height: 240px;
+      }
+
+      /* Tighten crop so hand stays visible on narrow portrait screens */
+      .hero img {
+        object-position: center 20%;
+      }
+
+      .our-story {
+        padding: 0 20px 64px;
+        margin-top: -48px;
+        background: linear-gradient(to bottom, transparent 0px, #ffffff 48px);
+      }
+
+      .our-story-inner {
+        max-width: 100%;
+      }
+
+      .our-story h2 {
+        font-size: 1.45rem;
+        margin-bottom: 28px;
+      }
+
+      .our-story p {
+        font-size: 1.05rem;
+        line-height: 1.7;
+        margin-bottom: 1.2em;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <h1 class="visually-hidden">Kevin White Winery</h1>
+    <img src="kww-logo-color-1000-trans.png" alt="Kevin White Winery">
+  </header>
+
+  <div class="hero">
+    <img src="MS-Stories-White-Kevin-133-web.jpg" alt="Winemaker's hand resting on a wine barrel">
+  </div>
+
+  <section class="our-story">
+    <div class="our-story-inner">
+      <h2>Our Story</h2>
+
+      <p>Founded in 2010 by Kevin and Stefanie White, Kevin White Winery was born from a simple but deeply held belief: that Washington could produce beautiful Rhône-inspired wines with balance, depth, and delicacy, crafted to pair extraordinarily well with food. For 15 years, that belief guided everything we did. From the beginning, our goal was to craft wines that were complex, expressive, and meant to be shared around the dinner table.</p>
+
+      <p>Influenced by the great wines of France's Rhône Valley, Kevin focused primarily on Syrah, Grenache, and Mourvèdre from cooler-climate, higher-elevation vineyards in the Yakima Valley. These sites allowed us to produce wines with depth and power, yet also finesse and restraint. Over the years, we were honored to work with extraordinary growers and vineyard partners, and to add our own voice to the story of Washington wine.</p>
+
+      <p>As we celebrated the final chapter of Kevin White Winery in 2026, we did so with immense gratitude and pride. What we are most proud of is not only the wine, but the community that formed around it. For 15 years, it has been our privilege to share these wines with you, to celebrate Washington's extraordinary vineyards, and to contribute in our own way to the tradition of Rhône-style winemaking in this state.</p>
+
+      <p>We hope our wines brought joy to your table and complemented meaningful moments in your lives. From our family to yours, thank you for being part of this journey.</p>
+
+      <p>Kevin</p>
+    </div>
+  </section>
+
+  <footer class="page-end">
+    <div class="page-end-rule"></div>
+    <img src="kww-logo-color-1000-trans.png" alt="Kevin White Winery">
+  </footer>
+
+</body>
+</html>
